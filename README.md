@@ -23,23 +23,6 @@ Ou transformar a API mockada em uma fonte interna com cache distribuído.
 🧱 Estrutura do Projeto
 A arquitetura está separada por responsabilidades claras:
 
-📦 fastapi-favorite-products/
-│── app/
-│   ├── core/                  # Configurações e segurança
-│   ├── db/                    # Modelos, repositórios e conexão
-│   ├── migrations/            # Alembic para versionamento do banco
-│   ├── router/                # Rotas da API
-│   ├── schemas/               # 
-│   ├── scripts/               # Scripts auxiliares, como o setup
-│   ├── services/              # Regras de negócio e integrações externas
-│   ├── tests/                 # Testes unitários com pytest
-│   ├── use_cases/             # Casos de uso (intermediários entre serviços e rotas)
-│   └── main.py                # Entrada principal da aplicação
-│── docker-compose.yml         # Orquestração da API e PostgreSQL
-│── Dockerfile                 # Dockerfile da aplicação FastAPI
-│── requirements.txt           # Dependências principais
-│── requirements-dev.txt       # Dependências de desenvolvimento
-
 
 🚀 Setup do Projeto
 O script setup.sh foi criado para simplificar o ambiente de desenvolvimento e garantir consistência entre as máquinas dos avaliadores.
