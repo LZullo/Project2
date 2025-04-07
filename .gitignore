@@ -1,0 +1,55 @@
+# Bytecode e arquivos temporários do Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.swp
+*.swo
+
+# Configurações e credenciais sensíveis
+.env
+.env.*
+
+# Dependências e pacotes virtuais
+venv/
+*.egg-info/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Arquivos do banco de dados local
+*.db
+
+# Docker
+docker-compose.override.yml
+docker-compose.override.yaml
+*.pid
+logs/
+volumes/
+
+# Cache e relatórios de testes
+.cache/
+.tox/
+coverage/
+coverage.xml
+htmlcov/
+pytest_cache/
+ruff_cache
+# IDEs e editores
+.vscode/
+.idea/
+*.iml
+
+# Logs e arquivos temporários
+*.log
+*.out
+*.err
+debug.log
+nohup.out
+
+# Build e artefatos
+build/
+dist/
+site/
+__pycache__/
+*.pyc
+**/venv/
