@@ -1,52 +1,70 @@
-📌 FastAPI Favorite Products
-Este projeto consiste em uma API RESTful desenvolvida com FastAPI para gerenciar produtos favoritados por clientes, com foco em performance, boas práticas de arquitetura, autenticação JWT, e uso profissional de ferramentas como Docker, SQLAlchemy, Alembic e Pytest.
+# 📌 FastAPI Favorite Products
 
-🧠 Estratégia para Armazenamento de Produtos Favoritados
-Durante o desenvolvimento, optei por armazenar localmente os principais dados do produto favoritado (title, image_url, price e review) na tabela favorite_products, ao invés de consultá-los dinamicamente da API externa de produtos.
+This project is a RESTful API built with **FastAPI** to manage customers' favorite products, focusing on performance, clean architecture practices, JWT authentication, and professional use of tools such as Docker, SQLAlchemy, Alembic, and Pytest.
 
-✅ Justificativas Técnicas
-Desempenho: evitar chamadas repetidas à API mockada reduz significativamente a latência na listagem de favoritos e melhora a escalabilidade do sistema.
+---
 
-Resiliência: com os dados armazenados localmente, a funcionalidade de favoritos permanece estável mesmo que a API externa esteja indisponível.
+## 🧠 Favorite Products Storage Strategy
 
-Congelamento de estado: o sistema registra o estado atual do produto no momento da adição como favorito, permitindo análises históricas e consistência de dados para o usuário.
+During development, I chose to store the main data of each favorited product (`title`, `image_url`, `price`, and `review`) locally in the `favorite_products` table, instead of retrieving it dynamically from the external products API.
 
-Simplicidade para o consumidor da API: o frontend ou cliente da API pode exibir os produtos favoritados diretamente, sem realizar chamadas adicionais para complementar os dados.
+### ✅ Technical Justifications
 
-🔄 Considerações
-Essa abordagem pode ocasionar desatualização dos dados dos produtos com o tempo. Caso haja necessidade de consistência em tempo real, a aplicação poderá evoluir para:
+- **Performance**: Avoiding repeated calls to the mock API significantly reduces latency when listing favorites and improves system scalability.
+- **Resilience**: With the data stored locally, the favorites feature remains stable even if the external API is unavailable.
+- **State freezing**: The system stores the product's state at the time it was favorited, allowing for historical analysis and consistent data presentation to the user.
+- **Simplified API consumption**: The frontend or API consumer can directly display favorite products without making additional calls to fetch complementary data.
 
-Atualizar periodicamente os dados dos produtos.
-Realizar sincronização sob demanda.
-Ou transformar a API mockada em uma fonte interna com cache distribuído.
+---
 
-🧱 Estrutura do Projeto
-A arquitetura está separada por responsabilidades claras:
+## 🔄 Considerations
 
+This approach may lead to outdated product data over time. If real-time consistency is required, the application can evolve to:
 
-🚀 Setup do Projeto
-O script setup.sh foi criado para simplificar o ambiente de desenvolvimento e garantir consistência entre as máquinas dos avaliadores.
+- Periodically update product data;
+- Perform on-demand synchronization;
+- Or convert the mock API into an internal source with distributed caching.
 
+---
+
+## 🧱 Project Structure
+
+The architecture is organized with clearly defined responsibilities to ensure maintainability and scalability.
+
+---
+
+## 🚀 Project Setup
+
+A `setup.sh` script was created to simplify the development environment setup and ensure consistency across reviewers' machines.
+
+```bash
 ./app/scripts/setup.sh
+```
+---
 
-Esse script realiza as seguintes etapas:
+## 🛠️ Script Steps
 
-Finaliza containers antigos, se existirem;
-Constrói e sobe os containers definidos no docker-compose.yml;
-Aguarda o banco PostgreSQL estar disponível;
-Aguarda a inicialização da API;
-Cria e aplica as migrações do banco automaticamente, utilizando o Alembic;
-Finaliza informando que a API está disponível em http://localhost:8000.
+- Stops any existing containers  
+- Builds and starts containers from `docker-compose.yml`  
+- Waits for the PostgreSQL database to be available  
+- Waits for the FastAPI server to initialize  
+- Automatically applies database migrations using **Alembic**  
+- Informs that the API is ready at [http://localhost:8000](http://localhost:8000)
 
-⚙️ Tecnologias Utilizadas
-📦 Produção
-FastAPI, SQLAlchemy, Alembic, Pydantic
-PostgreSQL, Docker, Docker Compose
-JWT com python-jose, passlib e bcrypt
-python-dotenv, pydantic-settings para variáveis de ambiente
+---
 
-🧪 Desenvolvimento e Testes
-pytest, pytest-asyncio, pytest-cov, httpx, pytest-mock
-black, flake8, isort, mypy para qualidade de código
-requests e python-multipart para integrações e testes
+## ⚙️ Technologies Used
+
+### 📦 Production
+
+- **FastAPI**, **SQLAlchemy**, **Alembic**, **Pydantic**
+- **PostgreSQL**, **Docker**, **Docker Compose**
+- JWT authentication with `python-jose`, `passlib`, `bcrypt`
+- Environment management: `python-dotenv`, `pydantic-settings`
+
+### 🧪 Development and Testing
+
+- **Testing**: `pytest`, `pytest-asyncio`, `pytest-cov`, `httpx`, `pytest-mock`
+- **Code quality**: `black`, `flake8`, `isort`, `mypy`
+- **Integrations**: `requests`, `python-multipart`
 
